@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Club Meetup</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <h1><a href="../index.html">Our Book Club</a></h1>
+    </header>
+    <main id="meetup-content">
+        <!-- Meetup details will be inserted here -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Our Book Club</p>
+    </footer>
+    <script>
+        // Meetup data will be inserted here
+        const meetup = {"date":"2024-10-20","location":"Community Center","books":[{"title":"Pride and Prejudice","author":"Jane Austen","cover":"https://example.com/pride-and-prejudice-cover.jpg"},{"title":"Emma","author":"Jane Austen","cover":"https://example.com/emma-cover.jpg"}]};
+
+        function generateMeetupHTML(meetup) {
+            const booksHTML = meetup.books.map(book => `
+                <div class="book">
+                    <img src="${book.cover}" alt="${book.title}">
+                    <div class="book-info">
+                        <h3>${book.title}</h3>
+                        <p>By ${book.author}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="meetup">
+                    <h2>Meetup on ${formatDate(meetup.date)}</h2>
+                    <p>Date: ${formatDate(meetup.date)}</p>
+                    <p>Location: ${meetup.location}</p>
+                    <h3>Books:</h3>
+                    ${booksHTML}
+                </div>
+            `;
+        }
+
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (meetup) {
+                document.getElementById('meetup-content').innerHTML = generateMeetupHTML(meetup);
+                document.title = `Book Club Meetup - ${formatDate(meetup.date)}`;
+            } else {
+                document.getElementById('meetup-content').innerHTML = '<p>Error: Meetup data not found.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
