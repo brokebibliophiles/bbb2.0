@@ -1,0 +1,12 @@
+[
+    {
+      "title": "Sample Title",
+      "description": "This is a sample description.",
+      "date": "2024-03-15"
+    },
+    {
+      "title": "Another Entry",
+      "description": "This is another sample entry.",
+      "date": "2024-03-10"
+    }
+  ]
